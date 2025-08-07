@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compound Interest Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg,#ead757,#d86672);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color:rgba(0,0,0,0);
+      padding: 30px 40px;
+     
+      box-shadow: 0 0 10px grey;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00796b;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Compound Interest Calculator</h2>
+    
+    <label for="principal">Principal (₹):</label>
+    <input type="number" id="principal" placeholder="Enter principal amount">
+
+    <label for="rate">Rate of Interest (% per year):</label>
+    <input type="number" id="rate" placeholder="Enter rate of interest">
+
+    <label for="time">Time (in years):</label>
+    <input type="number" id="time" placeholder="Enter number of years">
+
+    <label for="n">Compounded (times per year):</label>
+    <input type="number" id="n" value="1">
+
+    <button onclick="calculateCI()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateCI() {
+      let P = parseFloat(document.getElementById('principal').value);
+      let R = parseFloat(document.getElementById('rate').value);
+      let T = parseFloat(document.getElementById('time').value);
+      let N = parseFloat(document.getElementById('n').value);
+
+      if (isNaN(P) || isNaN(R) || isNaN(T) || isNaN(N) || P <= 0 || R <= 0 || T <= 0 || N <= 0) {
+        document.getElementById('result').innerHTML = " Please enter valid positive numbers.";
+        return;
+      }
+
+      let A = P * Math.pow((1 + R / (100 * N)), N * T);
+      let CI = A - P;
+
+      document.getElementById('result').innerHTML = `
+         <b>Compound Interest:</b> ₹${CI.toFixed(2)}<br>
+         <b>Total Amount:</b> ₹${A.toFixed(2)}
+      `;
+    }
+  </script>
+
+</body>
+</html>

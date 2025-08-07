@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+div{
+
+box-shadow:0 0 10px black;
+
+
+width:500px;
+margin:auto;
+margin-top:50px;
+padding:10px;
+
+
+}
+input {
+background:linear-gradient(180deg,lightblue,white);
+padding:10px;
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div>
+<h1>Sample Calculator</h1>
+<table border="1">
+<tr>
+  <td>Enter first value:</td>
+  <td><input type="text" id="fnum" placeholder="Enter first value"  /></td>
+</tr>
+
+<tr>
+  <td>Enter second value:</td>
+  <td><input type="text" id="snum" placeholder="Enter second value"/></td>
+</tr>
+
+<tr>
+  <td>Result:</td>
+  <td><input type="text" id="res" readonly="readonly"/></td>
+</tr>
+</table>
+
+  <td><input type="button" value="Add" onclick="btnplus_onclick();" /></td>
+  <td><input type="button" value="Sub" onclick="btnminus_onclick();"/></td>
+  <td><input type="button" value="Div" onclick="btndiv_onclick();"/></td>
+  <td><input type="button" value="Mul" onclick="btnmul_onclick();"/></td>
+  <td><input type="button" value="Mod" onclick="btnmod_onclick();"/></td>
+
+</div>
+
+<script>
+function btnplus_onclick(){
+  var jfnum = document.getElementById('fnum');
+  var jsnum = document.getElementById('snum');
+  var jres = document.getElementById('res');
+  jres.value = Number(jfnum.value) + Number(jsnum.value);
+}
+
+function btnminus_onclick(){
+  var jfnum = document.getElementById('fnum');
+  var jsnum = document.getElementById('snum');
+  var jres = document.getElementById('res');
+  jres.value = Number(jfnum.value) - Number(jsnum.value);
+}
+
+function btndiv_onclick(){
+  var jfnum = document.getElementById('fnum');
+  var jsnum = document.getElementById('snum');
+  var jres = document.getElementById('res');
+  jres.value = Number(jfnum.value) / Number(jsnum.value);
+}
+
+function btnmul_onclick(){
+  var jfnum = document.getElementById('fnum');
+  var jsnum = document.getElementById('snum');
+  var jres = document.getElementById('res');
+  jres.value = Number(jfnum.value) * Number(jsnum.value);
+}
+
+function btnmod_onclick(){
+  var jfnum = document.getElementById('fnum');
+  var jsnum = document.getElementById('snum');
+  var jres = document.getElementById('res');
+  jres.value = Number(jfnum.value) % Number(jsnum.value);
+}
+</script>
+
+</body>
+</html>

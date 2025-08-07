@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Area Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image:url("https://static.vecteezy.com/system/resources/previews/014/830/820/non_2x/square-triangle-pentagon-and-children-vector.jpg")    ;
+background-repeat:no-repeat;
+background:position:center;
+background-attachment:scroll;
+ margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+
+    background-color:rgba(255,255,255,0.5);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px black;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+ background-color: #ed569b;
+
+    }
+
+    select:hover, input:hover {
+      border-color: #666;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+       #formula, #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #2f2f2f;
+      text-align: center;
+    }
+
+    #inputs label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Area of Shapes Calculator</h1>
+
+    <label for="shape">Select Shape:</label>
+    <select id="shape" onchange="showInputs()">
+      <option value="">--Select--</option>
+      <option value="circle">Circle</option>
+      <option value="square">Square</option>
+      <option value="rectangle">Rectangle</option>
+      <option value="triangle">Triangle</option>
+      <option value="ellipse">Ellipse</option>
+    </select>
+
+    <div id="inputs"></div>
+
+    <button onclick="calculateArea()">Calculate Area</button>
+
+    <div id="formula"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function showInputs() {
+      const shape = document.getElementById("shape").value;
+      const inputs = document.getElementById("inputs");
+      const formula = document.getElementById("formula");
+      const result = document.getElementById("result");
+
+      formula.textContent = "";
+      result.textContent = "";
+
+      let html = "";
+
+      if (shape === "circle") {
+        html += '<label>Radius:</label><input type="number" id="radius" />';
+      } else if (shape === "square") {
+        html += '<label>Side:</label><input type="number" id="side" />';
+      } else if (shape === "rectangle") {
+        html += '<label>Length:</label><input type="number" id="length" />';
+        html += '<label>Breadth:</label><input type="number" id="breadth" />';
+      } else if (shape === "triangle") {
+        html += '<label>Base:</label><input type="number" id="base" />';
+        html += '<label>Height:</label><input type="number" id="height" />';
+      } else if (shape === "ellipse") {
+        html += '<label>Semi-major axis (a):</label><input type="number" id="a" />';
+        html += '<label>Semi-minor axis (b):</label><input type="number" id="b" />';
+      }
+
+      inputs.innerHTML = html;
+    }
+
+    function calculateArea() {
+      const shape = document.getElementById("shape").value;
+      const formula = document.getElementById("formula");
+      const result = document.getElementById("result");
+      let area = 0;
+
+      if (shape === "circle") {
+        const r = parseFloat(document.getElementById("radius").value);
+        area = Math.PI * r * r;
+        formula.textContent = "Formula: π × r²";
+      } else if (shape === "square") {
+        const s = parseFloat(document.getElementById("side").value);
+        area = s * s;
+        formula.textContent = "Formula: side × side";
+      } else if (shape === "rectangle") {
+        const l = parseFloat(document.getElementById("length").value);
+        const b = parseFloat(document.getElementById("breadth").value);
+        area = l * b;
+        formula.textContent = "Formula: length × breadth";
+      } else if (shape === "triangle") {
+        const base = parseFloat(document.getElementById("base").value);
+        const height = parseFloat(document.getElementById("height").value);
+        area = 0.5 * base * height;
+        formula.textContent = "Formula: ½ × base × height";
+      } else if (shape === "ellipse") {
+        const a = parseFloat(document.getElementById("a").value);
+        const b = parseFloat(document.getElementById("b").value);
+        area = Math.PI * a * b;
+        formula.textContent = "Formula: π × a × b";
+      }
+
+      result.textContent = `Area: ${area.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator</title>
+
+<style>
+body{
+text-align:center;
+}
+div{
+text-align:center;
+margin:auto;
+margin-top:50px;
+padding:10px;
+width:400px;'
+height:600px;
+background:linear-gradient(180deg,lightblue,lightgreen);
+box-shadow:0 10px 10px lightgrey;
+}
+
+
+</style>
+
+</head>
+<body>
+<div>
+  <h2>BMI Calculator</h2>
+
+
+
+  <p>Enter your height in centimeters:</p>
+  <input type="text" id="height">
+
+  <p>Enter your weight in kilograms:</p>
+  <input type="text" id="weight"><br><br>
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+</div>
+  <p id="result"></p>
+
+
+
+  <script>
+    function calculateBMI() {
+      var height = document.getElementById("height").value;
+      var weight = document.getElementById("weight").value;
+
+      // Convert height from cm to meters
+      var heightInMeters = height / 100;
+
+      // Calculate BMI
+      var bmi = weight / (heightInMeters * heightInMeters);
+
+      // Show result
+      document.getElementById("result").innerHTML = "Your BMI is " + bmi.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Interest Calculator</title>
+  <style>
+    body {
+     background-image :url("https://static.vecteezy.com/system/resources/previews/003/267/171/large_2x/calculator-campaign-for-web-website-template-page-landing-free-vector.jpg");
+      margin: 50px;
+background-repeat:no-repeat;
+background-position:center;
+background-attachment:scroll;
+
+     
+     
+    }
+
+    .calculator {
+     width: 600px;
+      margin: auto;
+      padding: 20px;
+      background:linear-gradient(180deg, lightblue ,white);
+      border-radius: 10px;
+      box-shadow: 0 0 10px black;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: grey;
+box-shadow:0 0   10px black;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Simple Interest Calculator</h2>
+
+    <label for="principal">Principal (₹):</label>
+    <input type="number" id="principal" placeholder="Enter principal amount">
+
+    <label for="rate">Rate of Interest (%):</label>
+    <input type="number" id="rate" placeholder="Enter interest rate">
+
+    <label for="time">Time (years):</label>
+    <input type="number" id="time" placeholder="Enter time in years">
+
+
+<button onclick="calculateInterest()">Calculate</button>
+
+  </div>
+
+
+ <div class="result" id="result"></div>
+
+
+  <script>
+    function calculateInterest() {
+      let P = parseFloat(document.getElementById("principal").value);
+      let R = parseFloat(document.getElementById("rate").value);
+      let T = parseFloat(document.getElementById("time").value);
+
+      if (isNaN(P) || isNaN(R) || isNaN(T)) {
+        document.getElementById("result").innerHTML = "Please enter all values.";
+        return;
+      }
+
+      let interest = (P * R * T) / 100;
+      let total = P + interest;
+
+      document.getElementById("result").innerHTML = 
+        `Simple Interest: ₹${interest.toFixed(2)}<br>Total Amount: ₹${total.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
