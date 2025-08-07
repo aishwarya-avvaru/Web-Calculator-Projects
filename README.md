@@ -1,1 +1,2 @@
-# Web-Calculator-Projects
+A multi-functional calculator web app designed for students and professionals — combining logic and responsive design using HTML, CSS, and JavaScript.
+An interactive collection of calculators for BMI, interest, area, temperature, and more — crafted with pure HTML, CSS, and JavaScript...
